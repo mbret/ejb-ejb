@@ -47,10 +47,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e08ef9df68ddeb24910bd7d58288fa463503f5d
 ### Eclipse template
 *.pydevproject
 .metadata
@@ -114,7 +110,3 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 
-
-=======
-.texlipse
->>>>>>> 7e08ef9df68ddeb24910bd7d58288fa463503f5d
