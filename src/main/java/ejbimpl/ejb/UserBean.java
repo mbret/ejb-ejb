@@ -1,12 +1,12 @@
 package ejbimpl.ejb;
 
-import javax.ejb.Stateless;
-
+import ejbinterface.entities.UserShared;
 import ejbinterface.interfaces.UserLocal;
 import ejbinterface.interfaces.UserRemote;
-import ejbinterfaces.entities.UserShared;
 import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.User;
+
+import javax.ejb.Stateless;
 
 @Stateless
 public class UserBean implements UserRemote, UserLocal {
