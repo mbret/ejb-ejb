@@ -17,6 +17,11 @@ public class UserBean implements UserRemote, UserLocal {
 		return null;
 	}
 
+    @Override
+    public boolean test(){
+        return true;
+    }
+    
 	// Inscription
 	@Override
 	public boolean createUser(String mail, String password) {
