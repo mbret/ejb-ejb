@@ -19,6 +19,8 @@ import ejbpersistance.entities.User;
 public class CommentBean implements CommentLocal, CommentRemote {
 
 	public List<CommentShared> findAllByArticle(Object id) {
+		return null;
+		/*
 		CommentDao cdao = new CommentDao();
 		List<Comment> u = cdao.findAllByArticle((Integer)id);		
 		try {
@@ -27,10 +29,12 @@ public class CommentBean implements CommentLocal, CommentRemote {
 			e.printStackTrace();
 			return null;
 		}	
+		*/
 	}
 
 	public CommentShared save(String content, Object userID, Object articleID) {
-		
+		return null;
+		/*
 		CommentDao cdao = new CommentDao();
 		UserDao userdao = new UserDao();
 		ArticleDao adao = new ArticleDao();
@@ -48,6 +52,7 @@ public class CommentBean implements CommentLocal, CommentRemote {
 			e.printStackTrace();
 			return null;
 		}	
+		*/
 	}
 
 }
