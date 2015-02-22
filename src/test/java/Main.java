@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ejbimpl.ejb.ArticleBean;
+import ejbimpl.ejb.CommentBean;
 import ejbimpl.ejb.UserBean;
 import ejbinterface.model.ArticleShared;
+import ejbinterface.model.CommentShared;
 import ejbinterface.model.UserShared;
 
 
@@ -55,6 +57,19 @@ public class Main {
 		}
 		ArticleShared as4 = ab.findOne(as.getId());
 		System.out.println(as4);
+		
+		
+
+		/************************
+		 * 
+		 * Test ArticleBean
+		 * 
+		 ************************/
+		
+		CommentBean cb = new CommentBean();
+		
+		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
+		System.out.println(cs);
 	}
 
 }
