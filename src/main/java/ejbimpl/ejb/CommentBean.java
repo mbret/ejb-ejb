@@ -1,4 +1,4 @@
-package ejb;
+package ejbimpl.ejb;
 
 import javax.ejb.Stateless;
 
