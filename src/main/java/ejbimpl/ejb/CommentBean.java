@@ -1,5 +1,6 @@
 package ejbimpl.ejb;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -32,27 +33,23 @@ public class CommentBean implements CommentLocal, CommentRemote {
 		*/
 	}
 
-	public CommentShared save(String content, Object userID, Object articleID) {
-		return null;
-		/*
+	public CommentShared save(String content, Object userID, Object articleID) throws Exception{
+		
 		CommentDao cdao = new CommentDao();
 		UserDao userdao = new UserDao();
 		ArticleDao adao = new ArticleDao();
+
+		java.util.Date date= new java.util.Date();
 		
 		Comment comm = new Comment();
 		comm.setContent(content);
 		comm.setUser(userdao.get((Integer)userID));
 		comm.setArticle(adao.get((Integer)articleID));
+		comm.setDate(new Timestamp(date.getTime()));
 		
 		Comment co = cdao.save(comm);
-
-		try {
-			return ModelFactory.convert(CommentShared.class, co);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}	
-		*/
+		return ModelFactory.convert(CommentShared.class, co);
+		
 	}
 
 }
