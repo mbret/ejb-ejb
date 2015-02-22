@@ -2,13 +2,11 @@ package ejbimpl.ejb;
 
 import javax.ejb.Stateless;
 
-import ejbinterface.model.ArticleShared;
-import ejbinterface.model.UserShared;
 import ejbinterface.factory.ModelFactory;
 import ejbinterface.interfaces.UserLocal;
 import ejbinterface.interfaces.UserRemote;
+import ejbinterface.model.UserShared;
 import ejbpersistance.dao.UserDao;
-import ejbpersistance.entities.Article;
 import ejbpersistance.entities.User;
 
 @Stateless
@@ -28,34 +26,27 @@ public class UserBean implements UserRemote, UserLocal {
 		}
 		return us;
 	}
-    
-	// Inscription
-	public UserShared createUser(String mail, String password) {
-		
-		UserDao userdao = new UserDao();
-		
-		User user = new User();
-		user.setEmail(mail);
-		user.setPassword(password);
-		
-		userdao.save(user);
-		
-		//@todo
-		return null;
-	}
-	
+    	
 	public boolean emailExist(String email) {
-		return false;
-	}
-
-	public boolean test() {
-		// TODO Auto-generated method stub
-		return false;
+		UserDao userdao = new UserDao();
+		try {
+			User exist = userdao.emailExist(email);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public UserShared findOne(Object id) {
-		// TODO Auto-generated method stub
-		return null;
+		UserDao userdao = new UserDao();
+		User u = userdao.get((Integer)id);		
+		try {
+			return ModelFactory.convert(UserShared.class, u);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
 	}
 
 	public UserShared save(String mail, String password) {
@@ -65,6 +56,7 @@ public class UserBean implements UserRemote, UserLocal {
 		User user = new User();
 		user.setEmail(mail);
 		user.setPassword(password);
+		user.setSubscriber(false);
 		
 		User uz = userdao.save(user);
 
@@ -77,8 +69,20 @@ public class UserBean implements UserRemote, UserLocal {
 	}
 
 	public void update(UserShared user) {
-		// TODO Auto-generated method stub
+		UserDao userdao = new UserDao();
 		
+		User u = new User();
+		u.setEmail(user.getMail());
+		u.setPassword(user.getPassword());
+		u.setId(user.getId());
+		u.setSubscriber(user.getSubscriber());
+		User uz = userdao.save(u);
+
+	}
+
+	public UserShared createUser(String mail, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
