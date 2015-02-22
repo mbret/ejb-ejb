@@ -35,15 +35,10 @@ public class UserBean implements UserRemote, UserLocal {
 		return userdao.emailExist(email);
 	}
 
-	public UserShared findOne(Object id) {
+	public UserShared findOne(Object id) throws Exception {
 		UserDao userdao = new UserDao();
 		User u = userdao.get((Integer)id);		
-		try {
-			return ModelFactory.convert(UserShared.class, u);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return ModelFactory.convert(UserShared.class, u);
 	}
 
     /**
@@ -52,18 +47,17 @@ public class UserBean implements UserRemote, UserLocal {
      * @param password
      * @return
      */
-	public UserShared save(String mail, String password) {
+	public UserShared save(String mail, String password) throws Exception{
 		
-        return new UserShared(10, "qsdqsd", "dfsdf", true);
-//		UserDao userdao = new UserDao();
-//		
-//		User user = new User();
-//		user.setEmail(mail);
-//		user.setPassword(password);
-//		user.setSubscriber(false);
-//		userdao.save(user);
-//
-//		return ModelFactory.convert(UserShared.class, user);
+		UserDao userdao = new UserDao();
+
+		User user = new User();
+		user.setEmail(mail);
+		user.setPassword(password);
+		user.setSubscriber(false);
+		userdao.save(user);
+
+		return ModelFactory.convert(UserShared.class, user);
 	}
 
 	public void update(UserShared user) {
