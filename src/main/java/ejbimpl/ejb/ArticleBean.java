@@ -60,7 +60,6 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 		}	
 	}
 
-    @Override
 	public ArticleShared save(String title, String content, Object userID) {
 		ArticleDao adao = new ArticleDao();
 		UserDao udao = new UserDao();
