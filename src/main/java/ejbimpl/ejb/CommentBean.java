@@ -15,15 +15,24 @@ import java.util.List;
 @Stateless
 public class CommentBean implements CommentLocal, CommentRemote {
 
-	public List<CommentShared> findAllByArticle(Object id) throws Exception{
-//		CommentDao cdao = new CommentDao();
-//		List<Comment> u = cdao.findAllByArticle((Integer)id);
-//        return ModelFactory.convert(CommentShared.class, u);
-        return null;
+	public List<CommentShared> findAllByArticle(Object id) {
+		return null;
+		/*
+		CommentDao cdao = new CommentDao();
+		List<Comment> u = cdao.findAllByArticle((Integer)id);		
+		try {
+			return ModelFactory.convert(CommentShared.class, u);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+		*/
+
 	}
 
 	public CommentShared save(String content, Object userID, Object articleID) {
-		
+		return null;
+		/*
 		CommentDao cdao = new CommentDao();
 		UserDao userdao = new UserDao();
 		ArticleDao adao = new ArticleDao();
@@ -41,6 +50,7 @@ public class CommentBean implements CommentLocal, CommentRemote {
 			e.printStackTrace();
 			return null;
 		}	
+		*/
 	}
 
 }
