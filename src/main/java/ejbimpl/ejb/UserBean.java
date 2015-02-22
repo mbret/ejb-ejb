@@ -36,15 +36,10 @@ public class UserBean implements UserRemote, UserLocal {
 		return userdao.emailExist(email);
 	}
 
-	public UserShared findOne(Object id) {
+	public UserShared findOne(Object id) throws Exception {
 		UserDao userdao = new UserDao();
 		User u = userdao.get((Integer)id);		
-		try {
-			return ModelFactory.convert(UserShared.class, u);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}	
+		return ModelFactory.convert(UserShared.class, u);
 	}
 
     /**

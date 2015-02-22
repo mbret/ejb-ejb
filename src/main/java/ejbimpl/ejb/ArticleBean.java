@@ -1,5 +1,7 @@
 package ejbimpl.ejb;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -13,70 +15,42 @@ import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.Article;
 import ejbpersistance.entities.User;
 
-import javax.ejb.Stateless;
-import java.util.List;
-
 
 @Stateless
 public class ArticleBean implements ArticleLocal, ArticleRemote {
 	
-	public boolean createArticle(String title, String content){		
-		ArticleDao adao = new ArticleDao();
-		
-		Article a = new Article();
-		a.setTitle(title);
-		a.setContent(content);
-		
-		adao.save(a);
-		
-		return true;
-	}
-
-    public List<ArticleShared> findAll(){
+	
+	public List<ArticleShared> findAll() throws Exception{
 		ArticleDao adao = new ArticleDao();
 		
 		List<Article> a = adao.getAll();
 		List<ArticleShared> as = null;
-		try {
-			as = (List<ArticleShared>) ModelFactory.convert(ArticleShared.class, a);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		as = (List<ArticleShared>) ModelFactory.convert(ArticleShared.class, a);		
 		return as;
 		
 	}
 
-	public ArticleShared findOne(Object id) {
+	public ArticleShared findOne(Object id) throws Exception {
 		ArticleDao adao = new ArticleDao();
 		
 		Article a = new Article();
 		a = adao.get((Integer)id);
-		try {
-			return ModelFactory.convert(ArticleShared.class, a);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}	
+		return ModelFactory.convert(ArticleShared.class, a);
 	}
 
-	public ArticleShared save(String title, String content, Object userID) {
+	public ArticleShared save(String title, String content, Object userID) throws Exception {
 		ArticleDao adao = new ArticleDao();
 		UserDao udao = new UserDao();
-		
+		java.util.Date date= new java.util.Date();
 		Article a = new Article();
 		a.setTitle(title);
 		a.setContent(content);
 		User u = udao.get((Integer)userID);
 		a.setUser(u);
+		a.setDate(new Timestamp(date.getTime()));
 		
 		Article az = adao.save(a);
-		try {
-			return ModelFactory.convert(ArticleShared.class, az);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}		
+		return ModelFactory.convert(ArticleShared.class, az);
 	}
 
 }
