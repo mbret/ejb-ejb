@@ -22,11 +22,11 @@ public class Main {
 		
 		UserBean ub = new UserBean();
 		
-		UserShared us1 = ub.findOne("test@test.fr", "psw");
-		System.out.println(us1.toString());
-		us1.setMail("fougeredecombat@hotmail.fr");
-		ub.update(us1);
-		System.out.println(us1.toString());
+		UserShared us = ub.findOne("test@test.fr", "psw");
+		System.out.println(us.toString());
+		us.setMail("fougeredecombat@hotmail.fr");
+		ub.update(us);
+		System.out.println(us.toString());
 
 //		UserShared us = ub.save("test@test.fr", "psw");
 //		UserShared us2 = ub.findOne(us.getId());
@@ -72,10 +72,22 @@ public class Main {
 		 * 
 		 ************************/
 		
+
 //		CommentBean cb = new CommentBean();
 //		
 //		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
 //		System.out.println(cs);
+
+		CommentBean cb = new CommentBean();
+		
+		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
+		System.out.println(cs);
+		List<CommentShared> cs2 = cb.findAllByArticle(as.getId());
+		for(CommentShared cs3 : cs2){
+			System.out.println(cs3);
+		}
+		
+
 	}
 
 }

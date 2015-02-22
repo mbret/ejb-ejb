@@ -50,7 +50,6 @@ public class UserBean implements UserRemote, UserLocal {
 	public UserShared save(String mail, String password) throws Exception{
 		
 		UserDao userdao = new UserDao();
-
 		User user = new User();
 		user.setEmail(mail);
 		user.setPassword(password);
