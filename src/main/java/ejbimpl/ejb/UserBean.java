@@ -18,9 +18,14 @@ import java.util.List;
 @Stateless
 public class UserBean implements UserRemote, UserLocal {
 
-	
-	// Authentification
-	public UserShared getUser(String mail, String password) {
+
+    /**
+     * 
+     * @param mail
+     * @param password
+     * @return
+     */
+	public UserShared findOne(String mail, String password) {
 		UserDao userdao = new UserDao();
 		User u;
 		UserShared us;
@@ -62,7 +67,13 @@ public class UserBean implements UserRemote, UserLocal {
 		return null;
 	}
 
-	public UserShared save(String mail, String password) {
+    /**
+     *
+     * @param mail
+     * @param password
+     * @return
+     */
+	public UserShared save(String mail, String password) throws Exception{
 		
 		UserDao userdao = new UserDao();
 		
@@ -71,12 +82,7 @@ public class UserBean implements UserRemote, UserLocal {
 		user.setPassword(password);
 		userdao.save(user);
 
-		try {
-			return ModelFactory.convert(UserShared.class, user);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}	
+		return ModelFactory.convert(UserShared.class, user);
 	}
 
 	public void update(UserShared user) {
