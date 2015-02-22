@@ -22,9 +22,14 @@ public class Main {
 		ub.update(us2);
 		UserShared us3 = ub.findOne(us.getId());
 		System.out.println(us3);
+		UserShared us4 = ub.findOne("testUpdate@test.fr", "pswupdate");
+		System.out.println(us4);
+		UserShared us5 = ub.findOne("nonTrouve@test.fr", "pswupdate");
+		System.out.println(us5);
 		Boolean b = ub.emailExist("testUpdate@test.fr");
 		System.out.println("email exist : "+b);
-		
+		b = ub.emailExist("nonTrouve@test.fr");
+		System.out.println("email exist : "+b);
 		
 		
 		

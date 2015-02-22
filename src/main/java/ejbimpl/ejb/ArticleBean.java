@@ -60,7 +60,7 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 		}	
 	}
 
-	public ArticleShared save(String title, String content, Object userID) {
+	public ArticleShared save(String title, String content, Object userID) throws Exception{
 		ArticleDao adao = new ArticleDao();
 		UserDao udao = new UserDao();
 		
@@ -71,12 +71,7 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 		a.setUser(u);
 		
 		Article az = adao.save(a);
-		try {
-			return ModelFactory.convert(ArticleShared.class, az);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}		
+		return ModelFactory.convert(ArticleShared.class, az);
 	}
 
 }
