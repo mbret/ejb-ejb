@@ -78,14 +78,14 @@ public class Main {
 //		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
 //		System.out.println(cs);
 
-		CommentBean cb = new CommentBean();
+//		CommentBean cb = new CommentBean();
 		
-		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
-		System.out.println(cs);
-		List<CommentShared> cs2 = cb.findAllByArticle(as.getId());
-		for(CommentShared cs3 : cs2){
-			System.out.println(cs3);
-		}
+//		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
+//		System.out.println(cs);
+//		List<CommentShared> cs2 = cb.findAllByArticle(as.getId());
+//		for(CommentShared cs3 : cs2){
+//			System.out.println(cs3);
+//		}
 		
 
 	}
