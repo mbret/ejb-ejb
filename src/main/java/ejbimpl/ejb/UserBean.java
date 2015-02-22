@@ -69,11 +69,10 @@ public class UserBean implements UserRemote, UserLocal {
 		User user = new User();
 		user.setEmail(mail);
 		user.setPassword(password);
-		
-		User uz = userdao.save(user);
+		userdao.save(user);
 
 		try {
-			return ModelFactory.convert(UserShared.class, uz);
+			return ModelFactory.convert(UserShared.class, user);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
