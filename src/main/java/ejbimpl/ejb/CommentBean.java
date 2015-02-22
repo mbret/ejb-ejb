@@ -19,18 +19,10 @@ import ejbpersistance.entities.User;
 @Stateless
 public class CommentBean implements CommentLocal, CommentRemote {
 
-	public List<CommentShared> findAllByArticle(Object id) {
-		return null;
-		/*
+	public List<CommentShared> findAllByArticle(Object id) throws Exception {
 		CommentDao cdao = new CommentDao();
 		List<Comment> u = cdao.findAllByArticle((Integer)id);		
-		try {
-			return ModelFactory.convert(CommentShared.class, u);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}	
-		*/
+		return ModelFactory.convert(CommentShared.class, u);
 	}
 
 	public CommentShared save(String content, Object userID, Object articleID) throws Exception{
