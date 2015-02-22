@@ -9,12 +9,22 @@ import ejbinterface.model.UserShared;
 import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.User;
 
+import javax.ejb.Stateless;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Stateless
 public class UserBean implements UserRemote, UserLocal {
 
-	
-	// Authentification
-	public UserShared getUser(String mail, String password) {
+
+    /**
+     * 
+     * @param mail
+     * @param password
+     * @return
+     */
+	public UserShared findOne(String mail, String password) {
 		UserDao userdao = new UserDao();
 		User u;
 		UserShared us;
@@ -49,7 +59,13 @@ public class UserBean implements UserRemote, UserLocal {
 		}	
 	}
 
-	public UserShared save(String mail, String password) {
+    /**
+     *
+     * @param mail
+     * @param password
+     * @return
+     */
+	public UserShared save(String mail, String password) throws Exception{
 		
 		UserDao userdao = new UserDao();
 		
@@ -60,12 +76,7 @@ public class UserBean implements UserRemote, UserLocal {
 		
 		User uz = userdao.save(user);
 
-		try {
-			return ModelFactory.convert(UserShared.class, uz);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}	
+		return ModelFactory.convert(UserShared.class, user);
 	}
 
 	public void update(UserShared user) {
@@ -81,6 +92,11 @@ public class UserBean implements UserRemote, UserLocal {
 	}
 
 	public UserShared createUser(String mail, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserShared getUser(String mail, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}

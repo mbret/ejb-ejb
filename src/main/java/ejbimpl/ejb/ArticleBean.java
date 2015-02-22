@@ -13,6 +13,10 @@ import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.Article;
 import ejbpersistance.entities.User;
 
+import javax.ejb.Stateless;
+import java.util.List;
+
+
 @Stateless
 public class ArticleBean implements ArticleLocal, ArticleRemote {
 	
@@ -27,8 +31,8 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 		
 		return true;
 	}
-	
-	public List<ArticleShared> findAll(){
+
+    public List<ArticleShared> findAll(){
 		ArticleDao adao = new ArticleDao();
 		
 		List<Article> a = adao.getAll();
@@ -56,7 +60,7 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 		}	
 	}
 
-
+    @Override
 	public ArticleShared save(String title, String content, Object userID) {
 		ArticleDao adao = new ArticleDao();
 		UserDao udao = new UserDao();
