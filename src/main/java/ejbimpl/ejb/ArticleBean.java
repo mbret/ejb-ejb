@@ -1,18 +1,14 @@
 package ejbimpl.ejb;
 
-import java.util.List;
-
-import ejbimpl.ejb.*;
 import ejbinterface.factory.ModelFactory;
 import ejbinterface.interfaces.ArticleLocal;
 import ejbinterface.interfaces.ArticleRemote;
 import ejbinterface.model.ArticleShared;
 import ejbpersistance.dao.ArticleDao;
-import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.Article;
-import ejbpersistance.entities.User;
 
 import javax.ejb.Stateless;
+import java.util.List;
 
 @Stateless
 public class ArticleBean implements ArticleLocal, ArticleRemote {
