@@ -7,6 +7,8 @@ import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.User;
 
 import javax.ejb.Stateless;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class UserBean implements UserRemote, UserLocal {
