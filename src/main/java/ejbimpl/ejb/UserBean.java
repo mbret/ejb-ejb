@@ -3,6 +3,7 @@ package ejbimpl.ejb;
 import javax.ejb.Stateless;
 
 import ejbinterface.model.UserShared;
+import ejbinterface.factory.ModelFactory;
 import ejbinterface.interfaces.UserLocal;
 import ejbinterface.interfaces.UserRemote;
 import ejbpersistance.dao.UserDao;
@@ -23,7 +24,7 @@ public class UserBean implements UserRemote, UserLocal {
 		UserShared us;
 		try {
 			u = userdao.findOne(mail, password);
-			us = new UserShared(u.getEmail(), u.getPassword(), false);
+			us = ModelFactory.convert(UserShared.class, u);
 		} catch (Exception e) {
 			us=null;
 		}
@@ -53,6 +54,21 @@ public class UserBean implements UserRemote, UserLocal {
 	public boolean test() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public UserShared findOne(Object id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserShared save(String mail, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void update(UserShared user) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

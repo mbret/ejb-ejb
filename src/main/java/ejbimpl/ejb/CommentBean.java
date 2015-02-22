@@ -16,4 +16,9 @@ public class CommentBean implements CommentLocal, CommentRemote {
 		return null;
 	}
 
+	public CommentShared save(String content, Object userID, Object articleID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
