@@ -2,7 +2,7 @@ package ejbimpl.ejb;
 
 import javax.ejb.Stateless;
 
-import ejbinterface.entities.UserShared;
+import ejbinterface.model.UserShared;
 import ejbinterface.interfaces.UserLocal;
 import ejbinterface.interfaces.UserRemote;
 import ejbpersistance.dao.UserDao;
@@ -19,7 +19,7 @@ public class UserBean implements UserRemote, UserLocal {
 		UserShared us;
 		try {
 			u = userdao.findOne(mail, password);
-			us = new UserShared(u.getEmail(), u.getPassword());
+			us = new UserShared(u.getEmail(), u.getPassword(), false);
 		} catch (Exception e) {
 			us=null;
 		}
@@ -27,7 +27,7 @@ public class UserBean implements UserRemote, UserLocal {
 	}
     
 	// Inscription
-	public boolean createUser(String mail, String password) {
+	public UserShared createUser(String mail, String password) {
 		
 		UserDao userdao = new UserDao();
 		
@@ -37,7 +37,18 @@ public class UserBean implements UserRemote, UserLocal {
 		
 		userdao.save(user);
 		
-		return true;
+		//@todo
+		return null;
+	}
+	
+	public boolean emailExist(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean test() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
