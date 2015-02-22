@@ -18,18 +18,15 @@ public class UserBean implements UserRemote, UserLocal {
      * @param mail
      * @param password
      * @return
+     * @throws Exception 
      */
-	public UserShared findOne(String mail, String password) {
+	public UserShared findOne(String mail, String password) throws Exception {
 		UserDao userdao = new UserDao();
 		User u;
 		UserShared us = null;
-		try {
-			u = userdao.findOne(mail, password);
-			if(u != null){
-				us = ModelFactory.convert(UserShared.class, u);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		u = userdao.findOne(mail, password);
+		if(u != null){
+			us = ModelFactory.convert(UserShared.class, u);
 		}
 		return us;
 	}
