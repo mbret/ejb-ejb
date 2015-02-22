@@ -17,7 +17,6 @@ import java.util.List;
 @Stateless
 public class UserBean implements UserRemote, UserLocal {
 
-
     /**
      * 
      * @param mail
@@ -39,13 +38,7 @@ public class UserBean implements UserRemote, UserLocal {
     	
 	public boolean emailExist(String email) {
 		UserDao userdao = new UserDao();
-		try {
-			User exist = userdao.emailExist(email);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		return userdao.emailExist(email);
 	}
 
 	public UserShared findOne(Object id) {
