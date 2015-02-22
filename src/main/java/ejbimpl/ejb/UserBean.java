@@ -2,9 +2,9 @@ package ejbimpl.ejb;
 
 import javax.ejb.Stateless;
 
+import ejbinterface.entities.UserShared;
 import ejbinterface.interfaces.UserLocal;
 import ejbinterface.interfaces.UserRemote;
-import ejbinterface.entities.UserShared;
 import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.User;
 
@@ -25,7 +25,7 @@ public class UserBean implements UserRemote, UserLocal {
 		}
 		return us;
 	}
-
+    
 	// Inscription
 	public boolean createUser(String mail, String password) {
 		
