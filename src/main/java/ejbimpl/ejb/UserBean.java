@@ -12,7 +12,6 @@ import ejbpersistance.entities.User;
 @Stateless
 public class UserBean implements UserRemote, UserLocal {
 
-
     /**
      * 
      * @param mail
@@ -30,7 +29,7 @@ public class UserBean implements UserRemote, UserLocal {
 		}
 		return us;
 	}
-    	
+    
 	public boolean emailExist(String email) {
 		UserDao userdao = new UserDao();
 		return userdao.emailExist(email);
