@@ -7,6 +7,7 @@ import ejbinterface.factory.ModelFactory;
 import ejbinterface.interfaces.ArticleLocal;
 import ejbinterface.interfaces.ArticleRemote;
 import ejbinterface.model.ArticleShared;
+import ejbinterface.model.UserShared;
 import ejbpersistance.dao.ArticleDao;
 import ejbpersistance.dao.UserDao;
 import ejbpersistance.entities.Article;
@@ -47,6 +48,20 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 	public ArticleShared findOne(Object id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public ArticleShared save(String title, String content, UserShared user) {
+		ArticleDao adao = new ArticleDao();
+		
+		Article a = new Article();
+		a.setTitle(title);
+		a.setContent(content);
+		User u = (User)ModelFactory.convert(UserShared.class, user);
+		a.setUser(u);
+		
+		adao.save(a);
+		
+		return true;
 	}
 
 }
