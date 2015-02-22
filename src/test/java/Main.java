@@ -22,11 +22,11 @@ public class Main {
 		
 		UserBean ub = new UserBean();
 		
-		UserShared us = ub.findOne("test@test.fr", "psw");
-		System.out.println(us.toString());
-		us.setMail("fougeredecombat@hotmail.fr");
-		ub.update(us);
-		System.out.println(us.toString());
+		UserShared us = ub.findOne("fougeredecombat@hotmail.fr", "psw");
+//		System.out.println(us.toString());
+//		us.setMail("fougeredecombat@hotmail.fr");
+//		ub.update(us);
+//		System.out.println(us.toString());
 
 //		UserShared us = ub.save("test@test.fr", "psw");
 //		UserShared us2 = ub.findOne(us.getId());
@@ -53,10 +53,10 @@ public class Main {
 		 * 
 		 ************************/
 		
-//		ArticleBean ab = new ArticleBean();
-//		
-//		ArticleShared as = ab.save("titre", "contenu", us4.getId());
-//		System.out.println(as);
+		ArticleBean ab = new ArticleBean();
+		
+		ArticleShared as = ab.save("Akonokokossanakiki", "Le silence n'est pas un oubli", us.getId());
+		System.out.println(as);
 //		List<ArticleShared> as2 = ab.findAll();
 //		for(ArticleShared as3 : as2){
 //			System.out.println(as3);
@@ -78,14 +78,14 @@ public class Main {
 //		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
 //		System.out.println(cs);
 
-		CommentBean cb = new CommentBean();
+//		CommentBean cb = new CommentBean();
+//		
+//		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
+//		System.out.println(cs);
+//		List<CommentShared> cs2 = cb.findAllByArticle(as.getId());
+//		for(CommentShared cs3 : cs2){
+//			System.out.println(cs3);
 		
-		CommentShared cs = cb.save("cteihde", us.getId(), as.getId());
-		System.out.println(cs);
-		List<CommentShared> cs2 = cb.findAllByArticle(as.getId());
-		for(CommentShared cs3 : cs2){
-			System.out.println(cs3);
-		}
 		
 
 	}

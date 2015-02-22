@@ -28,13 +28,11 @@ public class CommentBean implements CommentLocal, CommentRemote {
 		UserDao userdao = new UserDao();
 		ArticleDao adao = new ArticleDao();
 
-		java.util.Date date= new java.util.Date();
 		
 		Comment comm = new Comment();
 		comm.setContent(content);
 		comm.setUser(userdao.get((Integer)userID));
 		comm.setArticle(adao.get((Integer)articleID));
-		comm.setDate(new Timestamp(date.getTime()));
 		
 		Comment co = cdao.save(comm);
 		return ModelFactory.convert(CommentShared.class, co);

@@ -41,13 +41,13 @@ public class ArticleBean implements ArticleLocal, ArticleRemote {
 	public ArticleShared save(String title, String content, Object userID) throws Exception {
 		ArticleDao adao = new ArticleDao();
 		UserDao udao = new UserDao();
-		java.util.Date date= new java.util.Date();
+
 		Article a = new Article();
 		a.setTitle(title);
 		a.setContent(content);
 		User u = udao.get((Integer)userID);
 		a.setUser(u);
-		a.setDate(new Timestamp(date.getTime()));
+
 		
 		Article az = adao.save(a);
 		return ModelFactory.convert(ArticleShared.class, az);
