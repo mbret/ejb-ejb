@@ -63,12 +63,12 @@ public class UserBean implements UserRemote, UserLocal {
 	public void update(UserShared user) {
 		UserDao userdao = new UserDao();
 		
-		User u = new User();
-		u.setEmail(user.getMail());
-		u.setPassword(user.getPassword());
-		u.setId(user.getId());
-		u.setSubscriber(user.getSubscriber());
-		User uz = userdao.save(u);
+		String mail = user.getMail();
+		String pwd = user.getPassword();
+		int id = user.getId();
+		boolean sub = user.getSubscriber();
+		
+		User u = userdao.updateUser(id, mail, pwd, sub);
 
 	}
 }
